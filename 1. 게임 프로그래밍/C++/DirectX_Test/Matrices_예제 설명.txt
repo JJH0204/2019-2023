@@ -1,0 +1,35 @@
+함수 실행 순서
+1. CreateWindow()
+2. initD3D()
+3. InitGeometry() <신규>
+4. UpdateWindow()
+5. ShowWindow()
+6. Msg_Queue()
+7. Render()
+8. SetupMatrices() <신규>
+
+CreateDevie예제에서 변경된 함수 
+- InitGeometry()
+Geometry 의 뜻
+1. 기하학 2. 기하학적 구조
+InitGeometry 함수는 기하학적 구조의 값을 초기화 하는 함수로 보인다.
+
+추가된 함수 
+- SetupMatrices()
+매트릭스를 설정하는 함수로 아직 매트릭스에 대한 이해가 되어 있지 않다.
+
+실습
+1. 삼각형 축을 바꿔서 회전시키기
+- SetupMatrices() 에서 아래 코드
+-   D3DXVECTOR3 vUpVec( 0.0f, 1.0f, .0f );에서 매개변수로 전달되는 상수 (x축, y축, z축)의 값을 조정해 회전하는 각도를 조정할 수 있다. 다만 해당 코드의 위에 작성된 코드 D3DXMatrixRotationY( &matWorld, fAngle );를 바꾸지 았으면 회전축을 변환할 수 없다.
+때문에 축을 변환하기 위해서는 함수를 변경해야 한다.
+2. 회전을 45*만 회전 시켜보기
+- SetupMatrices() 에서 아래 코드
+- FLOAT fAngle = iTime * (0.5f * D3DX_PI) / 1000.0f; 에서 괄호안에 입력되는 상수값을 조정하면 회전하는 각도를 변경할 수 있다.
+- 다만 정지를 할 수 없다. 정지 하기 위해서는 fAngle에 45를 저장하면 된다.
+
+월드와 로컬이란
+로컬 : 나를 기준으로 바뀌지 않는 것을 의미
+월드 : 세상을 기준으로 
+
+문제

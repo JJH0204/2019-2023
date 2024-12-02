@@ -1,0 +1,72 @@
+﻿c++의 class 문법
+class ClassName
+{
+private:
+        int number_1;
+        int number_2;
+public:
+        void Print_Number()
+        {
+                cout>>number_1>>number_2>>endl;
+        }
+};
+
+
+c#의 class문법
+class ClassName
+{        //변수(함수)에 직접적으로 접근 제어자를 붙임
+        private int number_1;
+        private int number_2;
+        public static void Print_Number()
+        {
+                Console.WritLine(number_1+number_2);
+        }
+}
+
+
+
+
+c#의 메모리 참조자
+c#도 다른 c계열 언어들 처럼 함수를 선언할때 매개변수를 정할 수 있다. 
+하지만 포인터를 직접적으로 사용할 수 없게 해서 메모리 참조자 키워드를 사용해야 한다.
+
+
+ref와 out
+
+
+using System;
+class TestRef{
+        static void CallByRef(ref int x)
+        {
+                x = 1000;
+        }
+        public static void Main()
+        {
+                int x_1 =10;
+                CallByRef(ref x_1);
+                Console.WriteLine(“CVR : {0}”, x_1);
+        }
+}
+결과 : CVR : 1000
+
+
+x_1의 메모리값을 함수에 전달해 함수 내에서 메모리에 1000저장해 함수를 종료하고 이후 해당 변수의 저장된 값을 출력한다. (호출 하는 곳에서 변수를 초기화 해줘야 한다.)
+
+
+using System;
+class TestOut{
+        static void CallByRef(out int x)
+        {
+                x =1000;
+        }
+        public static void Main()
+        {
+                int x_1;
+                CallByRef(out x_1);
+                Console.WriteLine(“CBO : {0}”, x_1);
+        }
+}
+결과 : CBO : 1000;
+
+
+ref와 동일하지만 호출하는 곳에서 변수를 초기화 해줄 필요가 없다.
